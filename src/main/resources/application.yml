@@ -3,3 +3,39 @@ server:
 spring:
   kafka:
     bootstrap-servers: localhost:9092
+    consumer:
+      auto-offset-reset: earliest
+      enable-auto-commit: false
+      max-poll-records: 500
+      properties:
+        spring.json.trusted.packages: io.github.guisithos.consumer.model
+    listener:
+      ack-mode: MANUAL_IMMEDIATE
+      concurrency: 3
+    security:
+      protocol: SSL
+    ssl:
+      trust-store-location: classpath:kafka.truststore.jks
+      trust-store-password: ${TRUST_STORE_PASSWORD}
+  datasource:
+    url: jdbc:postgresql://${DB_HOST:localhost}:5432/${DB_NAME:studentdb}
+    username: ${DB_USER}
+    password: ${DB_PASSWORD}
+    hikari:
+      maximum-pool-size: 10
+      minimum-idle: 5
+      idle-timeout: 300000
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics
+  endpoint:
+    health:
+      show-details: always

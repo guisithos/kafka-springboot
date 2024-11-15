@@ -1,4 +1,4 @@
-package io.github.yesminmarie.consumer.config;
+package io.github.guisithos.consumer.config;
 
 import lombok.RequiredArgsConstructor;
 import org.apache.kafka.clients.consumer.ConsumerConfig;

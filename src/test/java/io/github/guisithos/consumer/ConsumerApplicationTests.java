@@ -1,4 +1,4 @@
-package io.github.yesminmarie.consumer;
+package io.github.guisithos.consumer;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
